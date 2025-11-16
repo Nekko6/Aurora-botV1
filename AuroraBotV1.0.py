@@ -27,6 +27,10 @@ async def on_member_join(member: discord.Member):
 
     await canal.send(embed=join_embed)
 
+@bot.event
+async def on_ready():
+ canal = bot.get_channel(1438021069234770011)
+ await canal.send("Tudo Certo")
 
 ##### TREE COMANDOS #####
 
@@ -50,6 +54,10 @@ async def ajuda(interaction: discord.Interaction):
 async def safada(interaction: discord.Interaction):
     await interaction.response.send_message(f'{interaction.user.mention}, sua safada!')
 
+@bot.tree.command()
+async def youtube(interaction: discord.Interaction):
+    await interaction.response.send_message(f'{interaction.user.mention}, confira o canal do meu criador\n'f'https://www.youtube.com/@NeKko_San64')
+
 
 ##### COMANDOS COMUNS #####
 
@@ -60,5 +68,7 @@ async def join_embed(ctx: commands.Context):
     join_embed.description = "Estamos felizes em ter você aqui. Aproveite sua estadia!"
     await ctx.reply(embed=join_embed)
 
-bot.run("seu token
-")
+
+
+bot.run("SEU TOKEN")
+
