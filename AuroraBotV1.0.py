@@ -5,6 +5,33 @@ from discord.ext import commands
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='.', intents=intents)
 
+##### coversa #####
+conversas = {
+    "boa noite": "Boa noite🌙! Tenha uma ótima noite de sono!",
+    "bom dia": "Bom dia☀️! Que seu dia seja incrível!",
+    "boa tarde": "Boa tarde🌤️! Espero que esteja tendo um ótimo dia!",
+    "oi": "Olá🩵! Como posso ajudar você hoje?",
+}
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    if "boa noite" in message.content.lower():
+        await message.channel.send(f'Boa noite🌙, {message.author.mention}!Tenha uma ótima noite de sono!')
+
+    if "bom dia" in message.content.lower():
+        await message.channel.send(f'Bom dia☀️, {message.author.mention}! Que seu dia seja incrível!')
+
+    if "boa tarde" in message.content.lower():
+        await message.channel.send(f'Boa tarde🌤️, {message.author.mention}! Espero que esteja tendo um ótimo dia!')
+
+    if "oi" in message.content.lower():
+        await message.channel.send(f'Olá🩵, {message.author.mention}! Como posso ajudar você hoje?')
+
+    await bot.process_commands(message)
+
 ##### EVENTOS #####
 
 @bot.event
@@ -27,10 +54,10 @@ async def on_member_join(member: discord.Member):
 
     await canal.send(embed=join_embed)
 
-@bot.event
+'''@bot.event
 async def on_ready():
- canal = bot.get_channel(1438021069234770011)
- await canal.send("Tudo Certo")
+ canal = bot.get_channel(1280230866811093004)
+ await canal.send(" Bom dia")'''
 
 ##### TREE COMANDOS #####
 
@@ -58,6 +85,10 @@ async def safada(interaction: discord.Interaction):
 async def youtube(interaction: discord.Interaction):
     await interaction.response.send_message(f'{interaction.user.mention}, confira o canal do meu criador\n'f'https://www.youtube.com/@NeKko_San64')
 
+##### VOICE CLIENTS COMANDOS #####
+
+    
+
 
 ##### COMANDOS COMUNS #####
 
@@ -66,9 +97,9 @@ async def join_embed(ctx: commands.Context):
     join_embed = discord.Embed()
     join_embed.title = "Bem-vindo ao Servidor!"
     join_embed.description = "Estamos felizes em ter você aqui. Aproveite sua estadia!"
-    await ctx.reply(embed=join_embed)
-
+    await ctx.reply(embed=join
 
 
 bot.run("SEU TOKEN")
+
 
